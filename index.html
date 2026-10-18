@@ -178,7 +178,7 @@
             border: none;
         }
 
-        /* Facebook Embed */
+        /* Facebook Embed Container */
         .facebook-embed {
             margin-top: 15px;
             margin-bottom: 10px;
@@ -186,7 +186,7 @@
             overflow: hidden;
             border: 2px solid #27ae60;
             width: 100%;
-            background: #ffffff; /* FB embeds render best on light backgrounds */
+            background: #ffffff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
@@ -196,24 +196,53 @@
             display: block;
         }
 
-        .fb-fallback {
-            text-align: center;
-            padding: 10px;
+        /* Professional Fallback Card */
+        .fb-fallback-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f0f2f5;
+            border-top: 1px solid #ddd;
+        }
+
+        .fb-fallback-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .fb-fallback-text {
+            flex-grow: 1;
+        }
+
+        .fb-fallback-text strong {
+            display: block;
+            color: #1c1e21;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .fb-fallback-text p {
+            color: #65676b;
             font-size: 12px;
-            color: #7f8c8d;
-            background: rgba(0,0,0,0.03);
-            border-top: 1px solid #ecf0f1;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
         }
 
-        .fb-fallback a {
-            color: #3498db;
-            text-decoration: none;
+        .fb-btn {
+            display: inline-block;
+            background: #1877f2;
+            color: white !important;
+            text-decoration: none !important;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: 600;
+            transition: background 0.2s ease;
         }
 
-        .fb-fallback a:hover {
-            text-decoration: underline;
-            color: #2ecc71;
+        .fb-btn:hover {
+            background: #166fe5;
         }
 
         /* URL list with bullets */
@@ -455,12 +484,16 @@
             const regularUrls = [];
             
             urls.forEach(url => {
-                const cleanUrl = url.replace(/[.,;:!?)]+$/, '');
+                // Clean trailing punctuation
+                let cleanUrl = url.replace(/[.,;:!?)]+$/, '');
                 
                 if (/(?:youtube\.com|youtu\.be)/i.test(cleanUrl)) {
                     youtubeUrls.push(cleanUrl);
                 } else if (/(?:facebook\.com|fb\.watch|fb\.com)/i.test(cleanUrl)) {
-                    // Differentiate between Facebook Videos/Reels and standard Posts
+                    // CRITICAL FIX: Normalize web.facebook.com or m.facebook.com to www.facebook.com
+                    // Facebook's embed plugin often rejects mobile/regional subdomains
+                    cleanUrl = cleanUrl.replace(/^(https?:\/\/)?(web|m)\.facebook\.com/i, 'https://www.facebook.com');
+                    
                     if (/\/videos\/|\/reels\//i.test(cleanUrl)) {
                         facebookVideoUrls.push(cleanUrl);
                     } else {
@@ -492,7 +525,7 @@
                 });
             }
 
-            // Facebook Video Embeds (Uses video.php endpoint)
+            // Facebook Video Embeds
             if (facebookVideoUrls.length > 0) {
                 facebookVideoUrls.forEach(url => {
                     html += `
@@ -504,16 +537,20 @@
                                     allowfullscreen="true" 
                                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                             </iframe>
-                            <div class="fb-fallback">
-                                If the video doesn't load, <a href="${url}" target="_blank" rel="noopener noreferrer">click here to open it on Facebook</a>.<br>
-                                <em>(Note: Facebook blocks embeds on local "file://" pages. Use a local server like Live Server).</em>
+                            <div class="fb-fallback-card">
+                                <div class="fb-fallback-icon">📘</div>
+                                <div class="fb-fallback-text">
+                                    <strong>Facebook Video</strong>
+                                    <p>If the video appears blank, it's because Facebook blocks embeds on local "file://" pages. Click below to view it directly.</p>
+                                    <a href="${url}" target="_blank" rel="noopener noreferrer" class="fb-btn">Open on Facebook ↗</a>
+                                </div>
                             </div>
                         </div>
                     `;
                 });
             }
 
-            // Facebook Post Embeds (Uses post.php endpoint)
+            // Facebook Post Embeds
             if (facebookPostUrls.length > 0) {
                 facebookPostUrls.forEach(url => {
                     html += `
@@ -525,8 +562,13 @@
                                     allowfullscreen="true" 
                                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                             </iframe>
-                            <div class="fb-fallback">
-                                If the post doesn't load, <a href="${url}" target="_blank" rel="noopener noreferrer">click here to open it on Facebook</a>.
+                            <div class="fb-fallback-card">
+                                <div class="fb-fallback-icon">📘</div>
+                                <div class="fb-fallback-text">
+                                    <strong>Facebook Post</strong>
+                                    <p>If the post appears blank, it's because Facebook blocks embeds on local "file://" pages. Click below to view it directly.</p>
+                                    <a href="${url}" target="_blank" rel="noopener noreferrer" class="fb-btn">Open on Facebook ↗</a>
+                                </div>
                             </div>
                         </div>
                     `;

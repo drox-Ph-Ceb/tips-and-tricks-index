@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tips & Tricks Index</title>
+    <title>Tips &amp; Tricks Index</title>
     <style>
         * {
             margin: 0;
@@ -40,6 +39,12 @@
             color: #2ecc71;
             font-size: 28px;
             font-weight: bold;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .add-btn {
@@ -211,7 +216,7 @@
         }
         .fb-btn:hover { background: #166fe5; }
 
-        /* Facebook Reel Specific Card (No iframe, prevents "Refused to connect") */
+        /* Facebook Reel Specific Card */
         .fb-reel-card {
             margin-top: 15px;
             border-radius: 12px;
@@ -351,18 +356,51 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💡 Tips & Tricks Index</h1>
-            <button class="add-btn" onclick="openModal()">+ Add New Tip</button>
+            <h1>💡 Tips &amp; Tricks Index</h1>
+            <div class="header-actions">
+                <button class="add-btn" onclick="openModal()">+ Add New Tip</button>
+                <button class="add-btn" style="background: #3498db;" onclick="exportToHtml()">💾 Export to HTML</button>
+            </div>
         </div>
                 
-        <div id="tipsContainer" class="tips-container"></div>
+        <div id="tipsContainer" class="tips-container"><div class="tip-box">
+                    <div class="tip-header">
+                        <div class="tip-title">📌 ESP32-C3 Itel FRP Problem done!</div>
+                        <div class="action-buttons">
+                            <button class="icon-btn edit-btn" onclick="editTip(0)" title="Edit">✏️</button>
+                            <button class="icon-btn delete-btn" onclick="deleteTip(0)" title="Delete">×</button>
+                        </div>
+                    </div>
+                    <div class="tip-content"><div class="content-section">Guide: Open FRP-Portal and Select Dial --&gt; Enter *#*#49#*#* --&gt; open APK Pop-up Virus Remover and Click "Remove FRP"</div>
+                            <div class="youtube-embed">
+                                <iframe src="https://www.youtube.com/embed/WgwaAmY3Q-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                </iframe>
+                            </div>
+                        </div>
+                </div><div class="tip-box">
+                    <div class="tip-header">
+                        <div class="tip-title">📌 ESP32 Flashing</div>
+                        <div class="action-buttons">
+                            <button class="icon-btn edit-btn" onclick="editTip(1)" title="Edit">✏️</button>
+                            <button class="icon-btn delete-btn" onclick="deleteTip(1)" title="Delete">×</button>
+                        </div>
+                    </div>
+                    <div class="tip-content"><div class="content-section">Guide: 
+* Hold boot key on your ESP32-C3 and Insert USB Cable --&gt; Release boot key after detection.
+* Click Download and Flash wait until done!</div>
+                            <div class="youtube-embed">
+                                <iframe src="https://www.youtube.com/embed/MM715_BtCF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                </iframe>
+                            </div>
+                        </div>
+                </div></div>
     </div>
 
     <!-- Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Add New Tip & Trick</h2>
+                <h2 id="modalTitle">Add New Tip &amp; Trick</h2>
             </div>
             <div class="form-group">
                 <label for="tipTitle">Title:</label>
@@ -370,7 +408,12 @@
             </div>
             <div class="form-group">
                 <label for="tipContent">Content:</label>
-                <textarea id="tipContent" placeholder="Enter tip content...&#10;&#10;Tips:&#10;- YouTube & Facebook URLs will be auto-embedded&#10;- Other URLs will be listed with bullets&#10;- Short messages (under 100 chars) get special styling"></textarea>
+                <textarea id="tipContent" placeholder="Enter tip content...
+
+Tips:
+- YouTube &amp; Facebook URLs will be auto-embedded
+- Other URLs will be listed with bullets
+- Short messages (under 100 chars) get special styling"></textarea>
             </div>
             <div class="modal-buttons">
                 <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
@@ -387,7 +430,18 @@
             setTimeout(() => location.reload(), 50);
         }
 
-        let tips = JSON.parse(localStorage.getItem('tipsAndTricks')) || [];
+        /* __TIPS_DATA_START__ */
+        let tips = [
+  {
+    "title": "ESP32-C3 Itel FRP Problem done!",
+    "content": "Guide: Open FRP-Portal and Select Dial --> Enter *#*#49#*#* --> open APK Pop-up Virus Remover and Click \"Remove FRP\"\nhttps://www.youtube.com/watch?v=WgwaAmY3Q-4&t=2s"
+  },
+  {
+    "title": "ESP32 Flashing",
+    "content": "Guide: \n* Hold boot key on your ESP32-C3 and Insert USB Cable --> Release boot key after detection.\n* Click Download and Flash wait until done!\nhttps://www.youtube.com/watch?v=MM715_BtCF4&t=2s"
+  }
+];
+        /* __TIPS_DATA_END__ */
 
         function checkPasscode() {
             const input = prompt("Enter admin passcode to proceed:");
@@ -445,10 +499,8 @@
                 if (/(?:youtube\.com|youtu\.be)/i.test(cleanUrl)) {
                     youtubeUrls.push(cleanUrl);
                 } else if (/(?:facebook\.com|fb\.watch|fb\.com)/i.test(cleanUrl)) {
-                    // Normalize mobile/regional subdomains to www
                     cleanUrl = cleanUrl.replace(/^(https?:\/\/)?(web|m)\.facebook\.com/i, 'https://www.facebook.com');
                     
-                    // CRITICAL: Separate Reels from standard Videos/Posts
                     if (/\/reel\//i.test(cleanUrl)) {
                         facebookReelUrls.push(cleanUrl);
                     } else if (/\/videos\//i.test(cleanUrl)) {
@@ -461,7 +513,6 @@
                 }
             });
             
-            // 1. YouTube Embeds
             if (youtubeUrls.length > 0) {
                 youtubeUrls.forEach(url => {
                     const videoId = getYouTubeId(url);
@@ -482,7 +533,6 @@
                 });
             }
 
-            // 2. Facebook Reels (Dedicated Card - No Iframe to prevent "Refused to connect")
             if (facebookReelUrls.length > 0) {
                 facebookReelUrls.forEach(url => {
                     html += `
@@ -498,7 +548,6 @@
                 });
             }
 
-            // 3. Facebook Standard Videos
             if (facebookVideoUrls.length > 0) {
                 facebookVideoUrls.forEach(url => {
                     html += `
@@ -523,7 +572,6 @@
                 });
             }
 
-            // 4. Facebook Standard Posts
             if (facebookPostUrls.length > 0) {
                 facebookPostUrls.forEach(url => {
                     html += `
@@ -548,7 +596,6 @@
                 });
             }
             
-            // 5. Regular URLs
             if (regularUrls.length > 0) {
                 html += '<ul class="url-list">';
                 regularUrls.forEach(url => {
@@ -669,6 +716,44 @@
             }
         }
 
+        // ==========================================
+        // EXPORT TO HTML (For GitHub Merge)
+        // ==========================================
+        function exportToHtml() {
+            if (!checkPasscode()) {
+                alert("Incorrect passcode! Action cancelled.");
+                return;
+            }
+            
+            // Ensure modal is closed for a clean export
+            closeModal();
+            
+            // Get the current HTML document
+            let htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            // Stringify the current tips array with nice formatting
+            const tipsJson = JSON.stringify(tips, null, 2);
+            
+            // Regex to find and replace the tips data block
+            const regex = /\/\* __TIPS_DATA_START__ \*\/[\s\S]*?let tips = [\s\S]*?;[\s\S]*?\/\* __TIPS_DATA_END__ \*\//;
+            const replacement = `/* __TIPS_DATA_START__ */\n        let tips = ${tipsJson};\n        /* __TIPS_DATA_END__ */`;
+            
+            const newHtmlContent = htmlContent.replace(regex, replacement);
+            
+            // Create a blob and trigger download
+            const blob = new Blob([newHtmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert("✅ index.html downloaded successfully!\n\nYou can now upload this file to your GitHub repository to permanently merge and save your tips.");
+        }
+
         document.getElementById('modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
@@ -677,5 +762,5 @@
 
         displayTips();
     </script>
-</body>
-</html>
+
+</body></html>

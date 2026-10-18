@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tips &amp; Tricks Index</title>
@@ -39,6 +40,7 @@
             color: #2ecc71;
             font-size: 28px;
             font-weight: bold;
+            margin: 0;
         }
 
         .header-actions {
@@ -280,6 +282,31 @@
             text-decoration: underline;
         }
 
+        /* Download Links below Title */
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .download-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .download-link:hover {
+            color: #2ecc71;
+            text-decoration: underline;
+            transform: translateX(4px);
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -356,44 +383,57 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💡 Tips &amp; Tricks Index</h1>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <h1>💡 Tips &amp; Tricks Index</h1>
+                <div class="download-links">
+                    <a href="https://www.mediafire.com/file/av8c4lfrd24zxd8/ESP32+Flasher.zip/file" target="_blank" rel="noopener noreferrer" class="download-link">
+                        <span>📥</span> ESP32 Flasher.zip
+                    </a>
+                    <a href="https://www.mediafire.com/file/r27i2ojab319sw7/APK_Pop-up_Virus_Remover_Portable.zip/file" target="_blank" rel="noopener noreferrer" class="download-link">
+                        <span>📥</span> APK Pop-up Virus Remover Portable.zip
+                    </a>
+                </div>
+            </div>
             <div class="header-actions">
                 <!--<button class="add-btn" onclick="openModal()">+ Add New Tip</button>-->
-                <!--<<button class="add-btn" style="background: #3498db;" onclick="exportToHtml()">💾 Export to HTML</button>-->
+                <!--<button class="add-btn" style="background: #3498db;" onclick="exportToHtml()">💾 Export to HTML</button>-->
             </div>
         </div>
                 
-        <div id="tipsContainer" class="tips-container"><div class="tip-box">
-                    <div class="tip-header">
-                        <div class="tip-title">📌 ESP32-C3 Itel FRP Problem done!</div>
-                        <div class="action-buttons">
-                            <button class="icon-btn edit-btn" onclick="editTip(0)" title="Edit">✏️</button>
-                            <button class="icon-btn delete-btn" onclick="deleteTip(0)" title="Delete">×</button>
-                        </div>
+        <div id="tipsContainer" class="tips-container">
+            <div class="tip-box">
+                <div class="tip-header">
+                    <div class="tip-title">📌 ESP32-C3 Itel FRP Problem done!</div>
+                    <div class="action-buttons">
+                        <button class="icon-btn edit-btn" onclick="editTip(0)" title="Edit">✏️</button>
+                        <button class="icon-btn delete-btn" onclick="deleteTip(0)" title="Delete">×</button>
                     </div>
-                    <div class="tip-content"><div class="content-section">Guide: Open FRP-Portal and Select Dial --&gt; Enter *#*#49#*#* --&gt; open APK Pop-up Virus Remover and Click "Remove FRP"</div>
-                            <div class="youtube-embed">
-                                <iframe src="https://www.youtube.com/embed/WgwaAmY3Q-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
-                                </iframe>
-                            </div>
-                        </div>
-                </div><div class="tip-box">
-                    <div class="tip-header">
-                        <div class="tip-title">📌 ESP32 Flashing</div>
-                        <div class="action-buttons">
-                            <button class="icon-btn edit-btn" onclick="editTip(1)" title="Edit">✏️</button>
-                            <button class="icon-btn delete-btn" onclick="deleteTip(1)" title="Delete">×</button>
-                        </div>
+                </div>
+                <div class="tip-content">
+                    <div class="content-section">Guide: Open FRP-Portal and Select Dial --&gt; Enter *#*#49#*#* --&gt; open APK Pop-up Virus Remover and Click "Remove FRP"</div>
+                    <div class="youtube-embed">
+                        <iframe src="https://www.youtube.com/embed/WgwaAmY3Q-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
                     </div>
-                    <div class="tip-content"><div class="content-section">Guide: 
+                </div>
+            </div>
+            <div class="tip-box">
+                <div class="tip-header">
+                    <div class="tip-title">📌 ESP32 Flashing</div>
+                    <div class="action-buttons">
+                        <button class="icon-btn edit-btn" onclick="editTip(1)" title="Edit">✏️</button>
+                        <button class="icon-btn delete-btn" onclick="deleteTip(1)" title="Delete">×</button>
+                    </div>
+                </div>
+                <div class="tip-content">
+                    <div class="content-section">Guide: 
 * Hold boot key on your ESP32-C3 and Insert USB Cable --&gt; Release boot key after detection.
 * Click Download and Flash wait until done!</div>
-                            <div class="youtube-embed">
-                                <iframe src="https://www.youtube.com/embed/MM715_BtCF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
-                                </iframe>
-                            </div>
-                        </div>
-                </div></div>
+                    <div class="youtube-embed">
+                        <iframe src="https://www.youtube.com/embed/MM715_BtCF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal -->
@@ -432,15 +472,15 @@ Tips:
 
         /* __TIPS_DATA_START__ */
         let tips = [
-  {
-    "title": "ESP32-C3 Itel FRP Problem done!",
-    "content": "Guide: Open FRP-Portal and Select Dial --> Enter *#*#49#*#* --> open APK Pop-up Virus Remover and Click \"Remove FRP\"\nhttps://www.youtube.com/watch?v=WgwaAmY3Q-4&t=2s"
-  },
-  {
-    "title": "ESP32 Flashing",
-    "content": "Guide: \n* Hold boot key on your ESP32-C3 and Insert USB Cable --> Release boot key after detection.\n* Click Download and Flash wait until done!\nhttps://www.youtube.com/watch?v=MM715_BtCF4&t=2s"
-  }
-];
+          {
+            "title": "ESP32-C3 Itel FRP Problem done!",
+            "content": "Guide: Open FRP-Portal and Select Dial --> Enter *#*#49#*#* --> open APK Pop-up Virus Remover and Click \"Remove FRP\"\nhttps://www.youtube.com/watch?v=WgwaAmY3Q-4&t=2s"
+          },
+          {
+            "title": "ESP32 Flashing",
+            "content": "Guide: \n* Hold boot key on your ESP32-C3 and Insert USB Cable --> Release boot key after detection.\n* Click Download and Flash wait until done!\nhttps://www.youtube.com/watch?v=MM715_BtCF4&t=2s"
+          }
+        ];
         /* __TIPS_DATA_END__ */
 
         function checkPasscode() {
@@ -450,7 +490,7 @@ Tips:
         }
 
         function extractUrls(text) {
-            const urlRegex = /(https?:\/\/[^\s<>"{}|\\^`[\]]+)|(www\.[^\s<>"{}|\\^`[\]]+)/gi;
+            const urlRegex = /(https?:\/\/[^\s<>"{}|^`[\]]+)|(www\.[^\s<>"{}|^`[\]]+)/gi;
             const urls = [];
             let match;
             while ((match = urlRegex.exec(text)) !== null) {
@@ -460,7 +500,7 @@ Tips:
         }
 
         function removeUrls(text) {
-            const urlRegex = /(https?:\/\/[^\s<>"{}|\\^`[\]]+)|(www\.[^\s<>"{}|\\^`[\]]+)/gi;
+            const urlRegex = /(https?:\/\/[^\s<>"{}|^`[\]]+)|(www\.[^\s<>"{}|^`[\]]+)/gi;
             return text.replace(urlRegex, '').trim();
         }
 
@@ -762,5 +802,5 @@ Tips:
 
         displayTips();
     </script>
-
-</body></html>
+</body>
+</html>

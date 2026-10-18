@@ -116,23 +116,11 @@
             justify-content: center;
         }
 
-        .edit-btn {
-            background: #f39c12;
-        }
+        .edit-btn { background: #f39c12; }
+        .edit-btn:hover { background: #d68910; transform: scale(1.1); }
 
-        .edit-btn:hover {
-            background: #d68910;
-            transform: scale(1.1);
-        }
-
-        .delete-btn {
-            background: #e74c3c;
-        }
-
-        .delete-btn:hover {
-            background: #c0392b;
-            transform: scale(1.1);
-        }
+        .delete-btn { background: #e74c3c; }
+        .delete-btn:hover { background: #c0392b; transform: scale(1.1); }
 
         .tip-content {
             color: #ecf0f1;
@@ -164,7 +152,7 @@
             overflow: hidden;
             border: 2px solid #27ae60;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
@@ -178,7 +166,7 @@
             border: none;
         }
 
-        /* Facebook Embed Container */
+        /* Facebook Standard Embed Container */
         .facebook-embed {
             margin-top: 15px;
             margin-bottom: 10px;
@@ -196,7 +184,6 @@
             display: block;
         }
 
-        /* Professional Fallback Card */
         .fb-fallback-card {
             display: flex;
             align-items: center;
@@ -206,28 +193,10 @@
             border-top: 1px solid #ddd;
         }
 
-        .fb-fallback-icon {
-            font-size: 32px;
-            flex-shrink: 0;
-        }
-
-        .fb-fallback-text {
-            flex-grow: 1;
-        }
-
-        .fb-fallback-text strong {
-            display: block;
-            color: #1c1e21;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .fb-fallback-text p {
-            color: #65676b;
-            font-size: 12px;
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-        }
+        .fb-fallback-icon { font-size: 32px; flex-shrink: 0; }
+        .fb-fallback-text { flex-grow: 1; }
+        .fb-fallback-text strong { display: block; color: #1c1e21; font-size: 14px; margin-bottom: 4px; }
+        .fb-fallback-text p { color: #65676b; font-size: 12px; margin: 0 0 8px 0; line-height: 1.4; }
 
         .fb-btn {
             display: inline-block;
@@ -240,10 +209,38 @@
             font-weight: 600;
             transition: background 0.2s ease;
         }
+        .fb-btn:hover { background: #166fe5; }
 
-        .fb-btn:hover {
-            background: #166fe5;
+        /* Facebook Reel Specific Card (No iframe, prevents "Refused to connect") */
+        .fb-reel-card {
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 2px solid #27ae60;
+            background: linear-gradient(135deg, #1877f2 0%, #0d47a1 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
+
+        .fb-reel-icon { font-size: 36px; flex-shrink: 0; }
+        .fb-reel-text { flex-grow: 1; color: white; }
+        .fb-reel-text strong { display: block; font-size: 16px; margin-bottom: 4px; }
+        .fb-reel-text p { font-size: 13px; opacity: 0.9; margin: 0 0 10px 0; line-height: 1.4; }
+
+        .fb-reel-btn {
+            display: inline-block;
+            background: white;
+            color: #1877f2 !important;
+            text-decoration: none !important;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+        .fb-reel-btn:hover { transform: scale(1.05); }
 
         /* URL list with bullets */
         .url-list {
@@ -292,9 +289,7 @@
             align-items: center;
         }
 
-        .modal.active {
-            display: flex;
-        }
+        .modal.active { display: flex; }
 
         .modal-content {
             background: linear-gradient(135deg, #1a2e24 0%, #0d1f17 100%);
@@ -306,26 +301,11 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .modal-header {
-            margin-bottom: 20px;
-        }
+        .modal-header { margin-bottom: 20px; }
+        .modal-header h2 { color: #2ecc71; font-size: 22px; }
 
-        .modal-header h2 {
-            color: #2ecc71;
-            font-size: 22px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #2ecc71;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; color: #2ecc71; font-weight: bold; margin-bottom: 8px; font-size: 14px; }
 
         .form-group input,
         .form-group textarea {
@@ -346,16 +326,9 @@
             box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
         }
 
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+        .form-group textarea { min-height: 150px; resize: vertical; }
 
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
+        .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; }
 
         .btn {
             padding: 10px 20px;
@@ -367,30 +340,12 @@
             transition: all 0.3s ease;
         }
 
-        .btn-cancel {
-            background: #7f8c8d;
-            color: white;
-        }
+        .btn-cancel { background: #7f8c8d; color: white; }
+        .btn-cancel:hover { background: #6c7a7d; }
+        .btn-save { background: #27ae60; color: white; }
+        .btn-save:hover { background: #229954; }
 
-        .btn-cancel:hover {
-            background: #6c7a7d;
-        }
-
-        .btn-save {
-            background: #27ae60;
-            color: white;
-        }
-
-        .btn-save:hover {
-            background: #229954;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #95a5a6;
-            font-size: 16px;
-        }
+        .empty-state { text-align: center; padding: 60px 20px; color: #95a5a6; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -479,22 +434,24 @@
             }
             
             const youtubeUrls = [];
+            const facebookReelUrls = [];
             const facebookVideoUrls = [];
             const facebookPostUrls = [];
             const regularUrls = [];
             
             urls.forEach(url => {
-                // Clean trailing punctuation
                 let cleanUrl = url.replace(/[.,;:!?)]+$/, '');
                 
                 if (/(?:youtube\.com|youtu\.be)/i.test(cleanUrl)) {
                     youtubeUrls.push(cleanUrl);
                 } else if (/(?:facebook\.com|fb\.watch|fb\.com)/i.test(cleanUrl)) {
-                    // CRITICAL FIX: Normalize web.facebook.com or m.facebook.com to www.facebook.com
-                    // Facebook's embed plugin often rejects mobile/regional subdomains
+                    // Normalize mobile/regional subdomains to www
                     cleanUrl = cleanUrl.replace(/^(https?:\/\/)?(web|m)\.facebook\.com/i, 'https://www.facebook.com');
                     
-                    if (/\/videos\/|\/reels\//i.test(cleanUrl)) {
+                    // CRITICAL: Separate Reels from standard Videos/Posts
+                    if (/\/reel\//i.test(cleanUrl)) {
+                        facebookReelUrls.push(cleanUrl);
+                    } else if (/\/videos\//i.test(cleanUrl)) {
                         facebookVideoUrls.push(cleanUrl);
                     } else {
                         facebookPostUrls.push(cleanUrl);
@@ -504,7 +461,7 @@
                 }
             });
             
-            // YouTube Embeds
+            // 1. YouTube Embeds
             if (youtubeUrls.length > 0) {
                 youtubeUrls.forEach(url => {
                     const videoId = getYouTubeId(url);
@@ -525,7 +482,23 @@
                 });
             }
 
-            // Facebook Video Embeds
+            // 2. Facebook Reels (Dedicated Card - No Iframe to prevent "Refused to connect")
+            if (facebookReelUrls.length > 0) {
+                facebookReelUrls.forEach(url => {
+                    html += `
+                        <div class="fb-reel-card">
+                            <div class="fb-reel-icon">🎬</div>
+                            <div class="fb-reel-text">
+                                <strong>Facebook Reel</strong>
+                                <p>Facebook security blocks Reels from being embedded in external websites. Click below to watch it directly.</p>
+                                <a href="${url}" target="_blank" rel="noopener noreferrer" class="fb-reel-btn">Watch Reel on Facebook ↗</a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // 3. Facebook Standard Videos
             if (facebookVideoUrls.length > 0) {
                 facebookVideoUrls.forEach(url => {
                     html += `
@@ -541,7 +514,7 @@
                                 <div class="fb-fallback-icon">📘</div>
                                 <div class="fb-fallback-text">
                                     <strong>Facebook Video</strong>
-                                    <p>If the video appears blank, it's because Facebook blocks embeds on local "file://" pages. Click below to view it directly.</p>
+                                    <p>If the video appears blank, Facebook may be blocking it on local "file://" pages.</p>
                                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="fb-btn">Open on Facebook ↗</a>
                                 </div>
                             </div>
@@ -550,7 +523,7 @@
                 });
             }
 
-            // Facebook Post Embeds
+            // 4. Facebook Standard Posts
             if (facebookPostUrls.length > 0) {
                 facebookPostUrls.forEach(url => {
                     html += `
@@ -566,7 +539,7 @@
                                 <div class="fb-fallback-icon">📘</div>
                                 <div class="fb-fallback-text">
                                     <strong>Facebook Post</strong>
-                                    <p>If the post appears blank, it's because Facebook blocks embeds on local "file://" pages. Click below to view it directly.</p>
+                                    <p>If the post appears blank, Facebook may be blocking it on local "file://" pages.</p>
                                     <a href="${url}" target="_blank" rel="noopener noreferrer" class="fb-btn">Open on Facebook ↗</a>
                                 </div>
                             </div>
@@ -575,7 +548,7 @@
                 });
             }
             
-            // Regular URLs
+            // 5. Regular URLs
             if (regularUrls.length > 0) {
                 html += '<ul class="url-list">';
                 regularUrls.forEach(url => {

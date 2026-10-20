@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tips &amp; Tricks Index</title>
     <style>
@@ -400,60 +399,55 @@
             </div>
         </div>
                 
-        <div id="tipsContainer" class="tips-container">
-            <div class="tip-box">
-                <div class="tip-header">
-                    <div class="tip-title">📌 ESP32-C3 Itel FRP Problem done!</div>
-                    <div class="action-buttons">
-                        <button class="icon-btn edit-btn" onclick="editTip(0)" title="Edit">✏️</button>
-                        <button class="icon-btn delete-btn" onclick="deleteTip(0)" title="Delete">×</button>
+        <div id="tipsContainer" class="tips-container"><div class="tip-box">
+                    <div class="tip-header">
+                        <div class="tip-title">📌 ESP32-C3 Itel FRP Problem done!</div>
+                        <div class="action-buttons">
+                            <button class="icon-btn edit-btn" onclick="editTip(0)" title="Edit">✏️</button>
+                            <button class="icon-btn delete-btn" onclick="deleteTip(0)" title="Delete">×</button>
+                        </div>
                     </div>
-                </div>
-                <div class="tip-content">
-                    <div class="content-section">Guide: Open FRP-Portal and Select Dial --&gt; Enter *#*#49#*#* --&gt; open APK Pop-up Virus Remover and Click "Remove FRP"</div>
-                    <div class="youtube-embed">
-                        <iframe src="https://www.youtube.com/embed/WgwaAmY3Q-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <div class="tip-content"><div class="content-section">Guide: Open FRP-Portal and Select Dial --&gt; Enter *#*#49#*#* --&gt; open APK Pop-up Virus Remover and Click "Remove FRP"</div>
+                            <div class="youtube-embed">
+                                <iframe src="https://www.youtube.com/embed/WgwaAmY3Q-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                </iframe>
+                            </div>
+                        </div>
+                </div><div class="tip-box">
+                    <div class="tip-header">
+                        <div class="tip-title">📌 ESP32 Flashing</div>
+                        <div class="action-buttons">
+                            <button class="icon-btn edit-btn" onclick="editTip(1)" title="Edit">✏️</button>
+                            <button class="icon-btn delete-btn" onclick="deleteTip(1)" title="Delete">×</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="tip-box">
-                <div class="tip-header">
-                    <div class="tip-title">📌 ESP32 Flashing</div>
-                    <div class="action-buttons">
-                        <button class="icon-btn edit-btn" onclick="editTip(1)" title="Edit">✏️</button>
-                        <button class="icon-btn delete-btn" onclick="deleteTip(1)" title="Delete">×</button>
-                    </div>
-                </div>
-                <div class="tip-content">
-                    <div class="content-section">Guide: 
+                    <div class="tip-content"><div class="content-section">Guide: 
 * Hold boot key on your ESP32-C3 and Insert USB Cable --&gt; Release boot key after detection.
 * Click Download and Flash wait until done!</div>
-                    <div class="youtube-embed">
-                        <iframe src="https://www.youtube.com/embed/MM715_BtCF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                            <div class="youtube-embed">
+                                <iframe src="https://www.youtube.com/embed/MM715_BtCF4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                </iframe>
+                            </div>
+                        </div>
+                </div><div class="tip-box">
+                    <div class="tip-header">
+                        <div class="tip-title">📌 FRP using ESP32 via SMS</div>
+                        <div class="action-buttons">
+                            <button class="icon-btn edit-btn" onclick="editTip(2)" title="Edit">✏️</button>
+                            <button class="icon-btn delete-btn" onclick="deleteTip(2)" title="Delete">×</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- NEW VIDEO ADDED HERE -->
-            <div class="tip-box">
-                <div class="tip-header">
-                    <div class="tip-title">📌FRP Via SMS Style </div>
-                    <div class="action-buttons">
-                        <button class="icon-btn edit-btn" onclick="editTip(2)" title="Edit">✏️</button>
-                        <button class="icon-btn delete-btn" onclick="deleteTip(2)" title="Delete">×</button>
-                    </div>
-                </div>
-                <div class="tip-content">
-                    <div class="content-section">Guide: Watch the embedded video below for details. (Feel free to edit this text!)</div>
-                    <div class="youtube-embed">
-                        <iframe src="https://www.youtube.com/embed/XTG-aqSrW7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="tip-content">
+                            <div class="youtube-embed">
+                                <iframe src="https://www.youtube.com/embed/XTG-aqSrW7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+                                </iframe>
+                            </div>
+                        </div>
+                </div></div>
     </div>
-</body>
 
-    <!-- Modal -->
+
+    
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -489,15 +483,19 @@ Tips:
 
         /* __TIPS_DATA_START__ */
         let tips = [
-          {
-            "title": "ESP32-C3 Itel FRP Problem done!",
-            "content": "Guide: Open FRP-Portal and Select Dial --> Enter *#*#49#*#* --> open APK Pop-up Virus Remover and Click \"Remove FRP\"\nhttps://www.youtube.com/watch?v=WgwaAmY3Q-4&t=2s"
-          },
-          {
-            "title": "ESP32 Flashing",
-            "content": "Guide: \n* Hold boot key on your ESP32-C3 and Insert USB Cable --> Release boot key after detection.\n* Click Download and Flash wait until done!\nhttps://www.youtube.com/watch?v=MM715_BtCF4&t=2s"
-          }
-        ];
+  {
+    "title": "ESP32-C3 Itel FRP Problem done!",
+    "content": "Guide: Open FRP-Portal and Select Dial --> Enter *#*#49#*#* --> open APK Pop-up Virus Remover and Click \"Remove FRP\"\nhttps://www.youtube.com/watch?v=WgwaAmY3Q-4&t=2s"
+  },
+  {
+    "title": "ESP32 Flashing",
+    "content": "Guide: \n* Hold boot key on your ESP32-C3 and Insert USB Cable --> Release boot key after detection.\n* Click Download and Flash wait until done!\nhttps://www.youtube.com/watch?v=MM715_BtCF4&t=2s"
+  },
+  {
+    "title": "FRP using ESP32 via SMS",
+    "content": "https://www.youtube.com/watch?v=XTG-aqSrW7I"
+  }
+];
         /* __TIPS_DATA_END__ */
 
         function checkPasscode() {
@@ -819,5 +817,6 @@ Tips:
 
         displayTips();
     </script>
-</body>
-</html>
+
+
+</body><!-- Modal --></html>
